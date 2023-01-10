@@ -6,8 +6,7 @@ public class WeaponMovement : MonoBehaviour
 {
     // variables
     [SerializeField] private float m_yUndulatingRange = 0.5f;
-    [SerializeField] private float m_UndulatingWalkSpeed = 0.5f;
-    [SerializeField] private float m_UndulatingRunSpeed = 0.5f;
+    [SerializeField] private float m_undulatingSpeedScale = 0.5f;
     private float m_defaultY;
 
     //references
@@ -21,7 +20,8 @@ public class WeaponMovement : MonoBehaviour
     private void Update() 
     {
         // need to check for running or walking
-        Undulate(m_UndulatingRunSpeed);
+        float undulateSpeed = m_playerCharacterController.velocity.magnitude * m_undulatingSpeedScale;
+        Undulate(undulateSpeed);
     }
 
     private void Undulate( float undulateSpeed )
