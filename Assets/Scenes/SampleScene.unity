@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1dee7cb10dae444b2e3bc2445ca4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_yUndulatingRange: 0.5
-  m_UndulatingWalkSpeed: 0.5
-  m_UndulatingRunSpeed: 0.5
+  m_yUndulatingRange: 0.05
+  m_UndulatingWalkSpeed: 6
+  m_UndulatingRunSpeed: 10
   m_playerCharacterController: {fileID: 0}
