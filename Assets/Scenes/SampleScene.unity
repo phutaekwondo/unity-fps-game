@@ -1250,4 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_yUndulatingRange: 0.05
   m_undulatingSpeedScale: 1.5
+  m_walkUndulatingSpeed: 5
+  m_runUndulatingSpeed: 10
   m_playerCharacterController: {fileID: 1271024474}
+  m_playerMovement: {fileID: 1271024476}
