@@ -16,6 +16,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 m_moveSpeed;
     private bool m_isGrounded;
     private float m_fallVelocity=0;
+    enum PlayerMovementState
+    {
+        Idle,
+        Walking,
+        Running,
+        Jumping,
+        FreeThrowing
+    }
+    private PlayerMovementState m_playerMovementState = PlayerMovementState.Idle;
 
     //references
     private CharacterController m_charactorController;
@@ -25,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_isGrounded = true;
         m_charactorController = GetComponent<CharacterController>();
+        m_playerMovementState = PlayerMovementState.Idle;
     }
 
     private void Update() 
@@ -137,25 +147,34 @@ public class PlayerMovement : MonoBehaviour
 
         m_isGrounded = false;
         m_fallVelocity = -m_jumpForce;
+        m_playerMovementState = PlayerMovementState.Jumping;
     }
     private void FreeThrow()
     {
         // update the move speed
         m_moveSpeed.x = m_charactorController.velocity.x;
         m_moveSpeed.z = m_charactorController.velocity.z;
+
+        m_playerMovementState = PlayerMovementState.FreeThrowing;
     }
     private void Idle()
     {
         m_moveSpeed = Vector3.zero;
+
+        m_playerMovementState = PlayerMovementState.Idle;
     }
     private void Walk(Vector3 moveDirection)
     {
         //m_charactorController.Move(moveDirection * m_walkSpeed * Time.deltaTime);
         m_moveSpeed = moveDirection * m_walkSpeed;
+
+        m_playerMovementState = PlayerMovementState.Walking;
     }
     private void Run( Vector3 moveDirection)
     {
         // m_charactorController.Move(moveDirection * m_runSpeed * Time.deltaTime);
         m_moveSpeed = moveDirection * m_runSpeed;
+
+        m_playerMovementState = PlayerMovementState.Running;
     }
 }
