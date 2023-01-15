@@ -12,7 +12,6 @@ public class WeaponMovement : MonoBehaviour
     private float m_defaultY;
 
     //references
-    [SerializeField] CharacterController m_playerCharacterController;
     [SerializeField] PlayerMovement m_playerMovement;
 
     private void Start() 
