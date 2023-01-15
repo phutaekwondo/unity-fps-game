@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerMovementState
+{
+    Idle,
+    Walking,
+    Running,
+    Jumping,
+    FreeThrowing
+}
 public class PlayerMovement : MonoBehaviour
 {
     //variables
@@ -16,25 +24,23 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 m_moveSpeed;
     private bool m_isGrounded;
     private float m_fallVelocity=0;
-    enum PlayerMovementState
-    {
-        Idle,
-        Walking,
-        Running,
-        Jumping,
-        FreeThrowing
-    }
     private PlayerMovementState m_playerMovementState = PlayerMovementState.Idle;
 
     //references
     private CharacterController m_charactorController;
     [SerializeField] private Transform m_cameraTransform;
 
+    //PUBLIC METHOD
+    public PlayerMovementState GetPlayerMovementState()
+    {
+        return m_playerMovementState;
+    }
+
+    //PRIVATE METHOD
     private void Start() 
     {
         m_isGrounded = true;
         m_charactorController = GetComponent<CharacterController>();
-        m_playerMovementState = PlayerMovementState.Idle;
     }
 
     private void Update() 
